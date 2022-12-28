@@ -8,6 +8,7 @@ import { BenefitType, SelectedPage } from "../../shared/types";
 import Benefit from "./Benefit";
 import ActionButton from "../../shared/ActionButton";
 import BenefitsPageGraphic from "../../assets/BenefitsPageGraphic.png";
+import HText from "../../shared/HText";
 
 const benefits: Array<BenefitType> = [
   {
@@ -59,9 +60,7 @@ function Benefits({ setSelectedPage }: Props) {
             visible: { opacity: 1, x: 0 },
           }}
         >
-          <h2 className="basis-3/5 font-montserrat text-3xl font-bold">
-            MORE THAN JUST A GYM.
-          </h2>
+          <HText>MORE THAN JUST A GYM.</HText>
           <p className="my-5 text-sm">
             We provide world class fitness equipment, trainers and classes to
             get you to your ultimate fitness goals with ease. We provide true
@@ -112,10 +111,10 @@ function Benefits({ setSelectedPage }: Props) {
                     visible: { opacity: 1, x: 0 },
                   }}
                 >
-                  <h2 className="basis-3/5 font-montserrat text-3xl font-bold">
+                  <HText>
                     MILLIONS OF HAPPY MEMBERS GETTING{" "}
                     <span className="text-primary-500">FIT</span>
-                  </h2>
+                  </HText>
                 </motion.div>
               </div>
             </div>

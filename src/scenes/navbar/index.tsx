@@ -7,17 +7,21 @@ import Link from "./Link";
 import ActionButton from "../../shared/ActionButton";
 
 type Props = {
+  isTopOfPage: boolean;
   selectedPage: SelectedPage;
   setSelectedPage: (value: SelectedPage) => void;
 };
 
-const NavBar = ({ selectedPage, setSelectedPage }: Props) => {
+const NavBar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
   const [isMenuToggled, setIsMenuToggled] = useState(false);
+  const navbarBackground = isTopOfPage ? "" : "bg-primary-100 drop-shadow";
 
   return (
     <nav>
-      <div className="flex-between fixed top-0 z-30 w-full py-6">
+      <div
+        className={`${navbarBackground} flex-between fixed top-0 z-30 w-full py-6`}
+      >
         <div className="flex-between mx-auto w-5/6">
           <div className="flex-between w-full gap-16">
             {/* Logo */}

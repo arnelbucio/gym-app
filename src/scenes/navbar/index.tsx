@@ -1,4 +1,7 @@
+import { useState } from "react";
+import { Bars3Icon } from "@heroicons/react/24/solid";
 import Logo from "../../assets/Logo.png";
+import useMediaQuery from "../../hooks/useMediaQuery";
 import { SelectedPage } from "../../shared/types";
 import Link from "./Link";
 
@@ -8,6 +11,9 @@ type Props = {
 };
 
 const NavBar = ({ selectedPage, setSelectedPage }: Props) => {
+  const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
+  const [isMenuToggled, setIsMenuToggled] = useState(false);
+
   return (
     <div className="flex-between fixed top-0 z-30 w-full py-6">
       <div className="flex-between mx-auto w-5/6">
@@ -16,34 +22,43 @@ const NavBar = ({ selectedPage, setSelectedPage }: Props) => {
           <img src={Logo} alt="logo" />
 
           {/* Menu Links */}
-          <div className="flex-between w-full">
-            <div className="flex-between gap-8 text-sm">
-              <Link
-                page="Home"
-                selectedPage={selectedPage}
-                setSelectedPage={setSelectedPage}
-              />
-              <Link
-                page="Benefits"
-                selectedPage={selectedPage}
-                setSelectedPage={setSelectedPage}
-              />
-              <Link
-                page="Our Classes"
-                selectedPage={selectedPage}
-                setSelectedPage={setSelectedPage}
-              />
-              <Link
-                page="Contact Us"
-                selectedPage={selectedPage}
-                setSelectedPage={setSelectedPage}
-              />
+          {isAboveMediumScreens ? (
+            <div className="flex-between w-full">
+              <div className="flex-between gap-8 text-sm">
+                <Link
+                  page="Home"
+                  selectedPage={selectedPage}
+                  setSelectedPage={setSelectedPage}
+                />
+                <Link
+                  page="Benefits"
+                  selectedPage={selectedPage}
+                  setSelectedPage={setSelectedPage}
+                />
+                <Link
+                  page="Our Classes"
+                  selectedPage={selectedPage}
+                  setSelectedPage={setSelectedPage}
+                />
+                <Link
+                  page="Contact Us"
+                  selectedPage={selectedPage}
+                  setSelectedPage={setSelectedPage}
+                />
+              </div>
+              <div className="flex-between gap-8">
+                <p>Sign In</p>
+                <button>Become a member</button>
+              </div>
             </div>
-            <div className="flex-between gap-8">
-              <p>Sign In</p>
-              <button>Become a member</button>
-            </div>
-          </div>
+          ) : (
+            <button
+              className="bg-secondary-500 rounded-full p-2"
+              onClick={() => setIsMenuToggled(!isMenuToggled)}
+            >
+              <Bars3Icon className="h-6 w-6 text-white" />
+            </button>
+          )}
         </div>
       </div>
     </div>
